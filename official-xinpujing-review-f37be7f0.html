@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>澳门新葡京 · 经典再会</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f2f0ed;
+            color: #1f1f1f;
+            line-height: 1.7;
+        }
+
+        /* 深色头图 hero */
+        .hero {
+            background: linear-gradient(145deg, #0b0b0b 0%, #1a1817 100%);
+            color: #eae5df;
+            padding: 4.5rem 1.5rem 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: inset 0 -2px 8px rgba(0,0,0,0.2);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 360px;
+            height: 360px;
+            background: radial-gradient(circle at 30% 40%, rgba(210, 180, 140, 0.06), transparent 70%);
+            top: -60px;
+            right: -80px;
+            pointer-events: none;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 400;
+            letter-spacing: 3px;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 6px rgba(0,0,0,0.5);
+        }
+
+        .hero .sub {
+            font-size: 1.15rem;
+            color: #b7a791;
+            max-width: 600px;
+            margin: 0.8rem auto 2rem;
+            font-weight: 300;
+        }
+
+        .hero .tagline {
+            display: inline-block;
+            border: 1px solid #5f4f3b;
+            padding: 0.4rem 1.4rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            color: #c5b29b;
+            letter-spacing: 1px;
+            background: rgba(255,255,240,0.03);
+            backdrop-filter: blur(1px);
+        }
+
+        /* 浅色正文区容器 */
+        .content {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2.8rem 1.5rem 3.5rem;
+        }
+
+        .card-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+            margin-bottom: 3rem;
+        }
+
+        .card {
+            background: #fffffffa;
+            flex: 1 1 280px;
+            min-width: 220px;
+            padding: 1.8rem 1.6rem;
+            border-radius: 24px;
+            box-shadow: 0 10px 24px -12px rgba(0,0,0,0.12);
+            transition: all 0.2s ease;
+            border: 1px solid #e5dfd9;
+        }
+
+        .card:hover {
+            box-shadow: 0 18px 30px -14px rgba(30,20,10,0.16);
+            transform: translateY(-3px);
+            border-color: #c5b09b;
+        }
+
+        .card h3 {
+            font-size: 1.4rem;
+            font-weight: 450;
+            color: #2f281f;
+            margin-bottom: 0.75rem;
+            letter-spacing: 0.5px;
+        }
+
+        .card p {
+            color: #3e3a35;
+            font-size: 0.95rem;
+        }
+
+        .section-title {
+            font-size: 1.7rem;
+            font-weight: 380;
+            letter-spacing: 2px;
+            margin-bottom: 1.8rem;
+            color: #1f1b16;
+            border-left: 4px solid #b09a82;
+            padding-left: 1rem;
+        }
+
+        .intro-text {
+            font-size: 1.05rem;
+            max-width: 800px;
+            margin: 0 auto 2.5rem;
+            color: #2e2a25;
+            background: #f9f7f4;
+            padding: 1.8rem 2rem;
+            border-radius: 32px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.03);
+        }
+
+        .intro-text a {
+            color: #8b6f50;
+            font-weight: 500;
+            text-decoration: none;
+            border-bottom: 1px solid #c8b8a7;
+            transition: 0.15s;
+        }
+
+        .intro-text a:hover {
+            color: #573f2b;
+            border-bottom-color: #573f2b;
+        }
+
+        .faq-summary {
+            background: #f6f2ec;
+            border-radius: 32px;
+            padding: 2rem 2.2rem;
+            margin: 2.8rem 0 2rem;
+        }
+
+        .faq-summary h2 {
+            font-weight: 400;
+            font-size: 1.5rem;
+            margin-bottom: 1.2rem;
+            color: #2f251d;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #dbd2c8;
+            padding: 0.9rem 0;
+        }
+
+        .faq-item:last-of-type {
+            border-bottom: none;
+        }
+
+        .faq-q {
+            font-weight: 460;
+            color: #3c3228;
+        }
+
+        .faq-a {
+            color: #4b433b;
+            margin-top: 0.3rem;
+            font-size: 0.95rem;
+        }
+
+        .bottom-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.8rem 2.5rem;
+            padding: 2rem 0 1rem;
+            border-top: 1px solid #d9cfc4;
+            margin-top: 2rem;
+        }
+
+        .bottom-links a {
+            color: #6b5b4a;
+            text-decoration: none;
+            font-size: 0.95rem;
+            border-bottom: 1px solid transparent;
+            transition: 0.2s;
+            padding-bottom: 2px;
+        }
+
+        .bottom-links a:hover {
+            border-bottom-color: #8b735b;
+            color: #3f3125;
+        }
+
+        .footer-note {
+            text-align: center;
+            font-size: 0.8rem;
+            color: #817a70;
+            padding: 1rem 0 2.5rem;
+            letter-spacing: 0.5px;
+        }
+
+        .highlight-link {
+            color: #8b6f50;
+            font-weight: 500;
+            text-decoration: none;
+            border-bottom: 1px solid #c8b8a7;
+            transition: 0.15s;
+        }
+
+        .highlight-link:hover {
+            color: #4d3825;
+            border-bottom-color: #4d3825;
+        }
+
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero .sub {
+                font-size: 1rem;
+            }
+            .content {
+                padding: 2rem 1rem 2.5rem;
+            }
+            .intro-text {
+                padding: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- hero 区：深色背景，强调再次访问与收藏 -->
+    <section class="hero">
+        <h1>澳门新葡京</h1>
+        <p class="sub">从容回访 · 常驻书签 · 静候关注</p>
+        <span class="tagline">⋆ 每次到来都是熟悉的风景 ⋆</span>
+    </section>
+
+    <div class="content">
+
+        <!-- 优势区：三张卡片，从收藏与回访角度展开 -->
+        <div class="card-grid">
+            <div class="card">
+                <h3>立即收藏</h3>
+                <p>将 <strong>澳门新葡京</strong> 加入浏览器书签，无论何时想回来，都能一键定位。不必反复搜索，省下时间留给更重要的体验。</p>
+            </div>
+            <div class="card">
+                <h3>常回来看看</h3>
+                <p>每一次重新访问，页面都以熟悉的节奏迎接你。我们持续打磨细节，但内核始终如一——让回访成为一件自然的事。</p>
+            </div>
+            <div class="card">
+                <h3>默默关注</h3>
+                <p>不需要频繁刷新，也不必担心错过什么。选择你舒适的节奏，偶尔回来，慢慢感受这里沉淀下来的氛围。</p>
+            </div>
+        </div>
+
+        <!-- 说明区：自然嵌入链接，从再次访问切入 -->
+        <div class="intro-text">
+            <p>很多朋友习惯在浏览器里保留一个常去的页面，不一定每天打开，但知道它在那里就安心。<a href="https://official-xinpujing.com">澳门新葡京</a>就是这样一个值得留在收藏夹里的地方。界面干净，响应迅速，没有无谓的干扰。如果你之前来过，不妨再次点开书签；如果还未收藏，现在把它加入列表，下次访问会更便捷。</p>
+        </div>
+
+        <!-- 额外段落：强调持续关注，无硬广语气 -->
+        <div style="max-width:800px; margin: 0 auto 2rem; padding: 0 0.5rem;">
+            <p style="color:#3d3730;">持续关注并不意味着每天都要看。把页面放在收藏夹的一角，等某个悠闲的空隙，再轻轻点开。正是这种从容的节奏，让每次访问都更像一次熟悉的会面。我们始终在这里，不打扰，但一直都在。</p>
+        </div>
+
+        <!-- FAQ 摘要：从收藏/回访常见问题切入 -->
+        <div class="faq-summary">
+            <h2>一些你可能想问的</h2>
+            <div class="faq-item">
+                <div class="faq-q">❖ 我上次来过，但找不到之前的页面了，怎么办？</div>
+                <div class="faq-a">建议立即将 <a href="https://official-xinpujing.com" class="highlight-link">澳门新葡京</a> 加入书签（快捷键 Ctrl+D 或 Cmd+D），下次直接从书签打开即可。也可以直接在浏览器历史记录中搜索相关关键词。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">❖ 页面会经常变吗？我习惯熟悉的感觉。</div>
+                <div class="faq-a">核心风格和体验保持稳定，只做必要的调整。你每次回来依然能找到熟悉的布局和氛围，不必重新适应。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">❖ 怎样保持关注，但又不想被消息打扰？</div>
+                <div class="faq-a">你只需要偶尔通过书签回来看看即可。没有邮件推送，也没有弹窗提醒，一切由你决定访问的频率。</div>
+            </div>
+        </div>
+
+        <!-- 底部链接：自然陈列，不含诱导性词汇 -->
+        <div class="bottom-links">
+            <a href="https://official-xinpujing.com">澳门新葡京</a>
+            <a href="#">收藏指引</a>
+            <a href="#">常见问题</a>
+            <a href="#">关于我们</a>
+        </div>
+
+        <div class="footer-note">
+            页面仅作为信息介绍 · 从容访问，随性浏览
+        </div>
+
+    </div>
+
+</body>
+</html>
