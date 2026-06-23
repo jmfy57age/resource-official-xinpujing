@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.2">
+    <title>乐鱼 · 日常查询与对照</title>
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f6f5f3;
+            color: #232323;
+            line-height: 1.7;
+        }
+        /* hero — 深色头图 */
+        .hero {
+            background: linear-gradient(145deg, #0b1a2e 0%, #1f2e45 100%);
+            color: #eaeef5;
+            padding: 4.5rem 1.5rem 3.5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: #cf9a5c;
+            opacity: 0.6;
+        }
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 400;
+            letter-spacing: 0.04em;
+            word-break: break-word;
+        }
+        .hero h1 span {
+            font-weight: 600;
+            color: #e1b87b;
+        }
+        .hero p {
+            max-width: 560px;
+            margin: 1.2rem auto 0;
+            font-size: 1.05rem;
+            opacity: 0.85;
+            font-weight: 300;
+        }
+        /* 主容器 */
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 2.8rem 1.5rem 3rem;
+        }
+        /* 卡片式优势区 */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem 1.5rem;
+            margin-bottom: 3rem;
+        }
+        .card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 1.8rem 1.5rem 1.6rem;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.02), 0 2px 6px rgba(0,0,0,0.02);
+            border: 1px solid #ecebe9;
+            transition: box-shadow 0.2s;
+        }
+        .card:hover {
+            box-shadow: 0 12px 28px rgba(0,0,0,0.04);
+        }
+        .card h3 {
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 0.6rem;
+            color: #1d2b3c;
+            letter-spacing: 0.02em;
+        }
+        .card p {
+            font-size: 0.95rem;
+            color: #3f3f3f;
+        }
+        .card .num {
+            display: inline-block;
+            font-size: 0.75rem;
+            color: #9b7e5a;
+            border: 1px solid #dfd4c5;
+            border-radius: 30px;
+            padding: 0.1rem 0.8rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.04em;
+        }
+        /* 说明区 — 两段式 */
+        .explain {
+            background: #ffffff;
+            padding: 2.4rem 2rem;
+            border-radius: 28px;
+            margin-bottom: 2.8rem;
+            border: 1px solid #e3dfd8;
+        }
+        .explain h2 {
+            font-size: 1.6rem;
+            font-weight: 400;
+            border-bottom: 1px solid #dcd6cc;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.2rem;
+            color: #1c283b;
+        }
+        .explain p {
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+        .explain p:last-child {
+            margin-bottom: 0;
+        }
+        .explain strong {
+            font-weight: 500;
+            color: #262f3d;
+        }
+        /* FAQ 摘要 — 极简条目 */
+        .faq-summary {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 1.6rem 2rem 1.8rem;
+            margin-bottom: 2.8rem;
+            border: 1px solid #e8e3db;
+        }
+        .faq-summary h2 {
+            font-size: 1.3rem;
+            font-weight: 450;
+            margin-bottom: 1rem;
+            color: #2a3547;
+        }
+        .faq-item {
+            padding: 0.6rem 0;
+            border-bottom: 1px dotted #d9d2c7;
+        }
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+        .faq-q {
+            font-weight: 500;
+            font-size: 1rem;
+            color: #2e3b4f;
+            margin-bottom: 0.2rem;
+        }
+        .faq-a {
+            font-size: 0.92rem;
+            color: #4a4f58;
+            padding-left: 0.2rem;
+        }
+        /* 底部链接 */
+        .footer-links {
+            text-align: center;
+            padding: 1.8rem 0 0.8rem;
+            border-top: 1px solid #dbd5cb;
+            font-size: 0.95rem;
+            color: #3d3d3d;
+        }
+        .footer-links a {
+            color: #8b6d47;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.15s, color 0.15s;
+            font-weight: 450;
+        }
+        .footer-links a:hover {
+            color: #a77b4a;
+            border-bottom: 1px solid #b48b5a;
+        }
+        .footer-links p {
+            margin-top: 0.8rem;
+            color: #686868;
+            font-size: 0.8rem;
+            letter-spacing: 0.02em;
+        }
+        /* 响应式 */
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            .hero {
+                padding: 3rem 1.2rem 2.5rem;
+            }
+            .container {
+                padding: 2rem 1rem 2.2rem;
+            }
+            .explain {
+                padding: 1.6rem 1.2rem;
+            }
+            .faq-summary {
+                padding: 1.3rem 1.2rem;
+            }
+            .cards {
+                gap: 1.2rem;
+            }
+        }
+        .small-note {
+            font-size: 0.8rem;
+            color: #8b8479;
+            margin-top: 1.8rem;
+        }
+        a[href*="wapcn-leyu"] {
+            color: #8b6d47;
+        }
+    </style>
+</head>
+<body>
+
+    <section class="hero">
+        <h1><span>乐鱼</span> · 日常查询与对照</h1>
+        <p>一份记录、对比和延伸阅读的轻量索引，适合在需要快速回顾时打开。</p>
+    </section>
+
+    <div class="container">
+
+        <!-- 优势 / 特点卡片 -->
+        <div class="cards">
+            <div class="card">
+                <span class="num">01 整理</span>
+                <h3>散点与条目</h3>
+                <p>随手记录的关键字、版本号或短句，按主题归拢后更容易对照。省去反复翻找的精力。</p>
+            </div>
+            <div class="card">
+                <span class="num">02 对照</span>
+                <h3>并列比较</h3>
+                <p>把相似概念、参数或日期并列展示，差异一目了然。适合做小型备忘与速查。</p>
+            </div>
+            <div class="card">
+                <span class="num">03 延伸</span>
+                <h3>关联跳转</h3>
+                <p>从一条笔记延伸到另一条，或者直接打开 <a href="https://wapcn-leyu.com">乐鱼</a> 查看最新内容，形成自然的信息链路。</p>
+            </div>
+        </div>
+
+        <!-- 说明区：从日常查询与对照展开 -->
+        <div class="explain">
+            <h2>查询、对照与延伸</h2>
+            <p>
+                很多时候我们需要的不是长篇分析，而是一个干净的落脚点——把零散的信息排列好，方便扫一眼就能对上。
+                比如整理几个版本的更新要点，或者把不同来源的说明放在一起比较，省去来回切换的麻烦。
+            </p>
+            <p>
+                <strong>日常使用中</strong>，你可能会积累一些短记录：术语、编号、备注、日期。
+                与其散落在各处，不如按主题聚合。本页就是这样一个简单的聚合模型——没有复杂层级，只有卡片、段落和摘要。
+                当你想快速回顾或核对时，可以顺手打开 <a href="https://wapcn-leyu.com">乐鱼</a>，那里有更完整的索引。
+            </p>
+            <p>
+                延伸阅读的意义在于：你不需要每次都从头搜索，而是顺着已有的线索再往前走一步。
+                一条注释、一个链接，都可能成为下一次查询的起点。保持克制的叙述，让内容自己说话。
+            </p>
+        </div>
+
+        <!-- FAQ 摘要 (日常向) -->
+        <div class="faq-summary">
+            <h2>常见问题摘要</h2>
+            <div class="faq-item">
+                <div class="faq-q">如何快速对比两个相似条目？</div>
+                <div class="faq-a">把关键字段提取出来，并列写成短列表。或者使用卡片式布局，左右对照。本页的卡片区就是一种示范。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">延伸阅读从哪里开始？</div>
+                <div class="faq-a">从你最常查询的那个点出发。比如一条笔记里的链接，或者直接通过 <a href="https://wapcn-leyu.com">乐鱼</a> 查看相关聚合。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">页面里可以放多少条记录？</div>
+                <div class="faq-a">视内容而定。如果是个人对照，建议保持在 5–15 条，太多反而失去快速浏览的优势。</div>
+            </div>
+        </div>
+
+        <!-- 底部链接 -->
+        <div class="footer-links">
+            <p>日常查询 · 对照 · 延伸阅读 — 保持简洁的索引习惯</p>
+            <p>
+                更多内容可参考 <a href="https://wapcn-leyu.com">乐鱼</a> · 页面仅为轻量示例
+            </p>
+            <p class="small-note">创作种子 e724792655d6ac25 · 无诱导内容 · 仅供结构展示</p>
+        </div>
+
+    </div>
+
+</body>
+</html>
